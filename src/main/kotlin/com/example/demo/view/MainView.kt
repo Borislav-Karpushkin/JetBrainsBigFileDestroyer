@@ -40,7 +40,7 @@ class MainView : View("Big File Destroyer") {
             readonlyColumn("type", ComparableFile::directory).minWidth(80).maxWidth(80)
             readonlyColumn("path", ComparableFile::path).weightedWidth(4)
             readonlyColumn("size", ComparableFile::sizeAsString).minWidth(80).maxWidth(80)
-            readonlyColumn("size (bytes)", ComparableFile::size).minWidth(80).maxWidth(100)
+            readonlyColumn("size (bytes)", ComparableFile::length).minWidth(80).maxWidth(100)
             fitToParentSize()
             contextMenu = ContextMenu().apply {
                 item("Delete").action {
@@ -76,10 +76,10 @@ class MainView : View("Big File Destroyer") {
                 val files = fileManagerService.getFiles()
                 topFiles.removeIf { !files.containsKey(it.path) }
                 topFiles.forEach {
-                    it.size = files[it.path]!!.size
+                    it.length = files[it.path]!!.length
                 }
                 files.forEach { (_, u) -> if (!topFiles.contains(u)) topFiles.add(u) }
-                topFiles.sortByDescending { it.size }
+                topFiles.sortByDescending { it.length }
             }
         }
     }
