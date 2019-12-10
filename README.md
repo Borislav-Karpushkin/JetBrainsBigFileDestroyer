@@ -1,5 +1,6 @@
 # JetBrainsBigFileDestroyer
 Program for finding large files and folders on your PC in choosen directory
+Settings for project: SDK 1.8
 
 1. For launch the app from your IDEA use TornadoFX plugin
 2. To choose the folder press green button
